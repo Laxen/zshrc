@@ -52,7 +52,8 @@ export LESS=dMqifR
 # Shorter key repeat delay and faster repeat rate
 xset r rate 200 40
 
-[ -f ~/scripts/zsh/axisrc ] && source ~/scripts/zsh/axisrc
+# Source private script that is not pushed to Github (i.e. company specific script)
+[ -f ~/scripts/zsh/privaterc ] && source ~/scripts/zsh/privaterc
 
 alias c='cd ..'
 alias gk='gitk --all &'
@@ -73,10 +74,13 @@ alias cspy="find . -name '*.py' > cscope.files && cscope -Rb"
 alias zshrc='vim ~/scripts/zsh/zshrc && source ~/scripts/zsh/zshrc'
 alias oe-find='oe-pkgdata-util find-path'
 alias am='git-am patches/'
-alias tagup='ctags -R .'
+alias tagup='ctags -R --exclude="oe-*" .'
 alias usbs='ls -alh /dev/ttyUSB* && ls -alh /dev/usblog*'
 bbake () { bitbake "$1" ; notify-send "Bitbake" "$1 build complete!" }
 bclean () { bitbake -c cleansstate "$1" ; notify-send "Bitbake" "$1 clean complete!" }
+alias poweroff="echo \"You don't want to do this\""
+alias shutdown="echo \"You don't want to do this\""
+alias reboot="echo \"You don't want to do this\""
 
 # fzf, fuzzy search in shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
